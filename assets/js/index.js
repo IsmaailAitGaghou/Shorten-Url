@@ -46,8 +46,8 @@ const shortLink = async () => {
 
     const res = await fetch('https://api.shrtco.de/v2/shorten?url='+inputForm.value)
     const data = await res.json()
-
-    localStorage.setItem(data.result.code , JSON.stringify(data))
+    localStorage.setItem(data.result.code, JSON.stringify(data));
+    
     
     const Links = JSON.parse( localStorage.getItem(data.result.code))
     if(!Links.ok) {
@@ -90,6 +90,8 @@ const shortLink = async () => {
         button.appendChild(ankorLink)
         form.insertAdjacentElement('afterend', boxShortenedLink)
     }
+
+    
 }
 
 
@@ -103,6 +105,6 @@ const sr = ScrollReveal({
     delay: 400,
     reset: true, // Animations repeat
 })
-sr.reveal(` .hero , .header__details`);
-sr.reveal(` .shorten`, {origin: 'bottom'})
+sr.reveal(` .hero__container , .card`);
+sr.reveal(` .form__shorten, .section__title, .section__subtitle`, { origin: "bottom" });
 sr.reveal(` .about_data`, {origin: 'left'})
